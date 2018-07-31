@@ -1,0 +1,36 @@
+{
+  "name": "sequelize-views-support",
+  "version": "1.0.0",
+  "description": "Adds VIEWS support to Sequelize.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -D -d build",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abelosorio/sequelize-views-support.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Sequelize",
+    "Views",
+    "PostgreSQL"
+  ],
+  "author": "Abel M. Osorio <abel.m.osorio@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abelosorio/sequelize-views-support/issues"
+  },
+  "homepage": "https://github.com/abelosorio/sequelize-views-support#readme",
+  "dependencies": {
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-node": "^6.1.1"
+  }
+}
