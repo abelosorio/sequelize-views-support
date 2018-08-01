@@ -1,5 +1,9 @@
 {
   "presets": [
-    ["env", { exclude: ["transform-es2015-classes"] }]
+    ["env", { exclude: ["transform-es2015-classes"] }],
+    "es2015"
+  ],
+  "plugins": [
+    "add-module-exports"
   ]
 }

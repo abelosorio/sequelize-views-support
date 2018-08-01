@@ -30,20 +30,20 @@ First, when creating the `sequelize` instance, you have to do it using this pack
 
 `sequelize.js`:
 ```javascript
-import Sequelize from 'sequelize-views-support';
+const Sequelize = require('sequelize-views-support');
 
 const sequelize = new Sequelize(
   // Use the same construction call you've been using so far
 );
 
-export default sequelize;
+module.exports = sequelize;
 ```
 
 Then, when creating your view models you have to set two more options (let's call this view `Foo`):
 
 `models/foo.js`:
 ```javascript
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const Foo = sequelize.define('foo', {
     field1: DataTypes.DATE,
     field2: DataTypes.STRING,
