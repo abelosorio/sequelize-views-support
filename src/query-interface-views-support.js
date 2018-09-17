@@ -1,8 +1,7 @@
 export default function addViewsSupportToQueryInterface(queryInterface) {
   queryInterface.dropView = function(viewName, options = {}) {
-    // const sql = this.QueryGenerator.dropViewQuery(viewName, options);
     const sql = `
-      DROP VIEW IF EXISTS "${viewName}"${options.cascade && ' CASCADE'}
+      DROP VIEW IF EXISTS "${viewName}"${options.cascade ? ' CASCADE' : ''}
     `;
 
     return this.sequelize.query(sql);
