@@ -26,7 +26,7 @@
   "homepage": "https://github.com/abelosorio/sequelize-views-support#readme",
   "dependencies": {
     "pg": "^6.4.2",
-    "sequelize": "^4.38.0"
+    "sequelize": "^6.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
