@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/abelosorio/sequelize-views-support#readme",
   "dependencies": {
-    "pg": "^6.4.2",
+    "pg": "^7.12.1",
     "sequelize": "^6.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "babel-preset-env": "^1.7.0"
   }
 }
