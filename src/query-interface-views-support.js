@@ -1,9 +1,6 @@
 export default function addViewsSupportToQueryInterface(queryInterface) {
   queryInterface.dropView = function(viewName, options = {}) {
-    const sql = `
-      DROP VIEW IF EXISTS "${viewName}"${options.cascade ? ' CASCADE' : ''}
-    `;
-
+    const sql = `DROP MATERIALIZED VIEW IF EXISTS ${viewName}`;
     return this.sequelize.query(sql);
   };
 
