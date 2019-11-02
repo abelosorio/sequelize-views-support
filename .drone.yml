@@ -4,33 +4,29 @@ type: docker
 name: default
 
 steps:
-  - name: npm
-    image: plugins/npm
-    settings:
-      username: sugarandmagic
-      password:
-        from_secret: npm_password
-      email: carrie@carriebeesley.com
-
+  - name: npm-login
+    image: node:dubnium-jessie
+    environment:
+      NPM_TOKEN:
+        from_secret: NPM_TOKEN
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
   - name: bootstrap
     image: node:dubnium-jessie
     when:
       event: push
     commands:
       - npm ci
-  # - name: test
-  #     image: node:dubnium-jessie
-  #     when:
-  #       event: push
-  #     commands:
-  #       - npm test
-  #       - npm run test:int
+      - npm test
+      - npm run build
   - name: publish
     image: node:dubnium-jessie
-    secrets: [GITHUB_TOKEN]
+    environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
     when:
-      event: push
-      branch: master
+      branch:
+      - master
     commands:
-      - npm run build
-      - npm publish
+      - npm whoami
+      - npm run release
