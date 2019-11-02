@@ -1,7 +1,7 @@
 {
-  "name": "sequelize-views-support",
-  "version": "1.2.2",
-  "description": "Adds VIEWS support to Sequelize.",
+  "name": "sequelize-mv-support",
+  "version": "0.0.2",
+  "description": "Adds materialized views support to Sequelize.",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
