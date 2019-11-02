@@ -4,6 +4,12 @@ type: docker
 name: default
 
 steps:
+  - name: npm-login
+    environment:
+      NPM_TOKEN:
+        from_secret: NPM_TOKEN
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
   - name: bootstrap
     image: node:dubnium-jessie
     when:
@@ -13,12 +19,10 @@ steps:
       - npm test
       - npm run build
   - name: publish
-    image: plugins/npm
+    
     when:
       branch:
       - master
-    settings:
-      username: sugarandmagic
-      password:
-        from_secret: npm_password
-      email: carrie@carriebeesley.com
+    commands:
+      - npm whoami
+      - npm run release
