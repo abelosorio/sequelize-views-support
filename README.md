@@ -3,6 +3,10 @@
 [![NPM version](https://img.shields.io/npm/v/sequelize-mv-support.svg)](https://www.npmjs.com/package/sequelize-mv-support)
 [![Build Status](https://cloud.drone.io/api/badges/sugarandmagic/sequelize-mv-support/status.svg)](https://cloud.drone.io/sugarandmagic/sequelize-mv-support)
 
+# TODO: Add README
+
+--------------
+
 This package adds support to **Views** in **Sequelize**.
 
 **NOTE:** Currently it's only supported in **PostgreSQL**.
