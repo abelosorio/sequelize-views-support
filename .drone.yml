@@ -19,7 +19,9 @@ steps:
       - npm test
       - npm run build
   - name: publish
-    
+    environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
     when:
       branch:
       - master
