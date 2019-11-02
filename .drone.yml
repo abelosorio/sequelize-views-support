@@ -5,6 +5,7 @@ name: default
 
 steps:
   - name: npm-login
+    image: node:dubnium-jessie
     environment:
       NPM_TOKEN:
         from_secret: NPM_TOKEN
@@ -19,6 +20,7 @@ steps:
       - npm test
       - npm run build
   - name: publish
+    image: node:dubnium-jessie
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
