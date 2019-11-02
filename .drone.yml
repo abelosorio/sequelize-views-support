@@ -14,7 +14,7 @@ steps:
       - npm run build
   - name: publish
     image: plugins/npm
-    trigger:
+    when:
       branch:
       - master
     settings:
