@@ -1,16 +1,18 @@
 {
-  "name": "sequelize-views-support",
-  "version": "1.2.2",
-  "description": "Adds VIEWS support to Sequelize.",
+  "name": "sequelize-mv-support",
+  "version": "0.0.1",
+  "description": "Adds materialized views support to Sequelize.",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "babel src -D -d build",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "commitlint": "commitlint --from master",
+    "release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abelosorio/sequelize-views-support.git"
+    "url": "git+https://github.com/sugarandmagic/sequelize-mv-support.git"
   },
   "keywords": [
     "NodeJS",
@@ -18,19 +20,101 @@
     "Views",
     "PostgreSQL"
   ],
-  "author": "Abel M. Osorio <abel.m.osorio@gmail.com>",
+  "author": "Carrie Beesley <carrie@carriebeesley.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abelosorio/sequelize-views-support/issues"
+    "url": "https://github.com/suagrandmagic/sequelize-mv-support/issues"
   },
-  "homepage": "https://github.com/abelosorio/sequelize-views-support#readme",
+  "homepage": "https://github.com/sugarandmagic/sequelize-mv-support#readme",
   "dependencies": {
     "pg": "^7.12.1",
     "sequelize": "^6.0.0"
   },
+  "engines": {
+    "node": ">=10.16.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@semantic-release/changelog": "^3.0.5",
+    "@semantic-release/commit-analyzer": "^6.3.2",
+    "@semantic-release/git": "^7.0.17",
+    "@semantic-release/github": "^5.5.5",
+    "@semantic-release/npm": "^5.3.2",
+    "@semantic-release/release-notes-generator": "^7.3.2",
+    "conventional-changelog-angular": "^5.0.5",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "npm-check-updates": "^3.1.26",
+    "prettier": "^1.18.2",
+    "semantic-release": "^15.13.28"
+  },
+  "directories": {
+    "doc": "./docs"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "post-merge": "npm ci",
+      "pre-commit": "npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "release": {
+    "branch": "master",
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "releaseRules": [
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "scope": "/core-.*/",
+              "release": "minor"
+            },
+            {
+              "type": "refactor",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md",
+            "docs/**"
+          ]
+        }
+      ]
+    ]
   }
 }
