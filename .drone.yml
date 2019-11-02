@@ -1,0 +1,36 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: npm
+    image: plugins/npm
+    settings:
+      username: sugarandmagic
+      password:
+        from_secret: npm_password
+      email: carrie@carriebeesley.com
+
+  - name: bootstrap
+    image: node:dubnium-jessie
+    when:
+      event: push
+    commands:
+      - npm ci
+  # - name: test
+  #     image: node:dubnium-jessie
+  #     when:
+  #       event: push
+  #     commands:
+  #       - npm test
+  #       - npm run test:int
+  - name: publish
+    image: node:dubnium-jessie
+    secrets: [GITHUB_TOKEN]
+    when:
+      event: push
+      branch: master
+    commands:
+      - npm run build
+      - npm publish
