@@ -5,6 +5,9 @@
 
 # TODO: Add README
 
+This is a fork from [Abel M. Osorio](https://github.com/abelosorio)'s original package and is a WIP!
+It will eventually support Materialized Views in Sequelize.
+
 --------------
 
 This package adds support to **Views** in **Sequelize**.
