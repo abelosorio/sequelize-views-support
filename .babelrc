@@ -1,8 +1,12 @@
 {
   "presets": [
-    ["env", { "exclude": ["transform-es2015-classes"] }]
-  ],
-  "plugins": [
-    "add-module-exports"
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        }
+      }
+    ]
   ]
 }

@@ -4,8 +4,8 @@
   "description": "Adds materialized views support to Sequelize.",
   "main": "build/index.js",
   "scripts": {
-    "test": "jest",
-    "build": "babel src -D -d build",
+    "test": "jest src",
+    "build": "babel src --out-dir build --ignore '**/*.test.js'",
     "prepublish": "npm run build",
     "commitlint": "commitlint --from master",
     "release": "semantic-release"
@@ -34,9 +34,10 @@
     "node": ">=10.16.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-preset-env": "^1.7.0",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.0",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@semantic-release/changelog": "^3.0.5",
