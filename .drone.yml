@@ -13,15 +13,11 @@ steps:
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
   - name: bootstrap
     image: node:dubnium-jessie
-    when:
-      event: push
     commands:
       - npm ci
       - npm run build
   - name: test
     image: node:dubnium-jessie
-    when:
-      event: push
     commands:
       - npm test
   - name: publish
@@ -33,7 +29,10 @@ steps:
         from_secret: NPM_TOKEN
     when:
       branch:
-      - master
+        - master
+      event:
+        - push
     commands:
       - npm whoami
+      - npm run build
       - npm run release
