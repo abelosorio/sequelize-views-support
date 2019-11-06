@@ -17,7 +17,6 @@ steps:
       event: push
     commands:
       - npm ci
-      - npm test
       - npm run build
   - name: test
     image: node:dubnium-jessie
