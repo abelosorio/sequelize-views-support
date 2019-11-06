@@ -29,9 +29,9 @@ steps:
         from_secret: NPM_TOKEN
     when:
       branch:
-        - master
+      - master
       event:
-        - push
+      - push
     commands:
       - npm whoami
       - npm run build
