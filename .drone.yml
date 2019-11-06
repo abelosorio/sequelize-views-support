@@ -19,6 +19,12 @@ steps:
       - npm ci
       - npm test
       - npm run build
+  - name: test
+    image: node:dubnium-jessie
+    when:
+      event: push
+    commands:
+      - npm test
   - name: publish
     image: node:dubnium-jessie
     environment:
