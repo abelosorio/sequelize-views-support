@@ -1,6 +1,6 @@
 {
   "name": "sequelize-mv-support",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Adds materialized views support to Sequelize.",
   "main": "build/index.js",
   "scripts": {

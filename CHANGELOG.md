@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.0.0...v2.0.1) (2019-11-07)
+
+
+### Bug Fixes
+
+* **babel:** fix es6 default export ([253d261](https://github.com/sugarandmagic/sequelize-mv-support/commit/253d261eef15d5eafe668268c6be5c1aee9dd02a))
+
 # [2.0.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v1.0.2...v2.0.0) (2019-11-06)
 
 
