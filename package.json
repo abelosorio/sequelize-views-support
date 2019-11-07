@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "test": "jest src",
-    "build": "babel src --out-dir build --ignore '**/*.test.js'",
+    "build": "rm -rf ./build && babel src --out-dir build --ignore '**/*.test.js'",
     "prepublish": "npm run build",
     "commitlint": "commitlint --from master",
     "release": "semantic-release"
@@ -37,6 +37,7 @@
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.0",
     "@babel/node": "^7.7.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
@@ -46,6 +47,7 @@
     "@semantic-release/github": "^5.5.5",
     "@semantic-release/npm": "^5.3.2",
     "@semantic-release/release-notes-generator": "^7.3.2",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "conventional-changelog-angular": "^5.0.5",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.6.0",
@@ -58,9 +60,6 @@
     "npm-check-updates": "^3.1.26",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.28"
-  },
-  "directories": {
-    "doc": "./docs"
   },
   "config": {
     "commitizen": {

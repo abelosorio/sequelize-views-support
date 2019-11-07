@@ -1,7 +1,8 @@
 # Add Views support to Sequelize
 
 [![NPM version](https://img.shields.io/npm/v/sequelize-mv-support.svg)](https://www.npmjs.com/package/sequelize-mv-support)
-[![Build Status](https://cloud.drone.io/api/badges/sugarandmagic/sequelize-mv-support/status.svg)](https://cloud.drone.io/sugarandmagic/sequelize-mv-support)[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Build Status](https://cloud.drone.io/api/badges/sugarandmagic/sequelize-mv-support/status.svg)](https://cloud.drone.io/sugarandmagic/sequelize-mv-support)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 # TODO: Add README
 
