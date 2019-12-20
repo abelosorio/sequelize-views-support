@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.0.1...v2.1.0) (2019-12-20)
+
+
+### Features
+
+* **deps:** remove broken dep ([8c0b48c](https://github.com/sugarandmagic/sequelize-mv-support/commit/8c0b48cda8f0c94e876303b492e7cd2d3c3f2c42))
+
 ## [2.0.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.0.0...v2.0.1) (2019-11-07)
 
 
