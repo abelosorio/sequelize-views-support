@@ -1,12 +1,11 @@
 import {
   DropOptions,
-  Model,
+  Model as ModelOrig,
   ModelOptions,
-  Sequelize,
   SyncOptions,
 } from 'sequelize';
 
-import { QueryInterfaceWithViews } from './SequelizeWithViews';
+import { Sequelize, QueryInterfaceWithViews } from './SequelizeWithViews';
 
 /**
  * Interface describing the options property on a model
@@ -15,18 +14,21 @@ import { QueryInterfaceWithViews } from './SequelizeWithViews';
  * @interface ModelOptionsWithViews
  * @extends {ModelOptions}
  */
-export interface ModelOptionsWithViews extends ModelOptions {
+export interface ModelOptionsWithViews<M extends ModelOrig>
+  extends ModelOptions<M> {
   treatAsView?: boolean;
+  treatAsMaterializedView?: boolean;
+  viewDefinition?: string;
+  materializedViewDefinition?: string;
 }
 
 export type DropOptionsType = DropOptions & {
   treatAsView?: boolean;
+  treatAsMaterializedView?: boolean;
   viewDefinition?: string;
 };
 
-export type OptionsType = ModelOptions<Model> & {
-  treatAsView?: boolean;
-  viewDefinition?: string;
+export type OptionsType = ModelOptionsWithViews<ModelOrig> & {
   sequelize: Sequelize;
 };
 
@@ -34,10 +36,10 @@ export type OptionsType = ModelOptions<Model> & {
  * Model abstract class with view support
  *
  * @export
- * @class ModelWithViews
+ * @class Model
  * @extends {Model}
  */
-export class ModelWithViews extends Model {
+export class Model extends ModelOrig {
   /** @inheritdoc */
   public static readonly options: OptionsType;
 
@@ -46,14 +48,19 @@ export class ModelWithViews extends Model {
 
   /** @inheritdoc */
   public static drop(options: DropOptionsType = {}): any {
-    const method = this.options.treatAsView ? 'dropView' : 'dropTable';
+    const method = this.options.treatAsView
+      ? 'dropView'
+      : this.options.treatAsMaterializedView
+      ? 'dropMaterializedView'
+      : 'dropTable';
 
     return this.QueryInterface[method](this.getTableName(), options);
   }
 
   /** @inheritdoc */
   public static sync(options: SyncOptions): any {
-    if (this.options.treatAsView) return Promise.resolve();
+    if (this.options.treatAsView || this.options.treatAsMaterializedView)
+      return Promise.resolve();
 
     return super.sync(options);
   }
@@ -63,7 +70,7 @@ export class ModelWithViews extends Model {
    *
    * @static
    * @returns {Promise<[unknown[], unknown]>} Result of the create view request
-   * @memberof ModelWithViews
+   * @memberof Model
    */
   public static syncView(): Promise<[unknown[], unknown]> {
     return this.QueryInterface.createView(
@@ -73,15 +80,51 @@ export class ModelWithViews extends Model {
   }
 
   /**
+   * Executes the query to create a materialized view
+   *
+   * @static
+   * @returns {Promise<[unknown[], unknown]>} Result of the create materialized view request
+   * @memberof Model
+   */
+  public static syncMaterializedView(): Promise<[unknown[], unknown]> {
+    return this.QueryInterface.createMaterializedView(
+      this.getTableName(),
+      this.getMaterializedViewDefinition()
+    );
+  }
+
+  /**
    * Gets the sql definition for this view
    *
    * @static
    * @returns {string} SQL query string to create a view
-   * @memberof ModelWithViews
+   * @memberof Model
    */
   public static getViewDefinition(): string {
     return this.options.viewDefinition;
   }
+
+  /**
+   * Gets the sql definition for this materialized view
+   *
+   * @static
+   * @returns {string} SQL query string to create the materialized view
+   * @memberof Model
+   */
+  public static getMaterializedViewDefinition(): string {
+    return this.options.materializedViewDefinition;
+  }
+
+  /**
+   * Refreshes the materialized view in the database
+   *
+   * @static
+   * @returns {Promise<[unknown[], unknown]>}
+   * @memberof Model
+   */
+  public static refreshMaterializedView(): Promise<[unknown[], unknown]> {
+    return this.QueryInterface.refreshMaterializedView(this.getTableName());
+  }
 }
 
-export default ModelWithViews;
+export default Model;

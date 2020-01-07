@@ -1,13 +1,10 @@
-import Sequelize, {
-  ModelAttributes,
-  SyncOptions,
-  QueryInterface,
-} from 'sequelize';
+export * from 'sequelize';
+import SequelizeOrig from 'sequelize';
 import ModelManager from 'sequelize/types/lib/model-manager';
 
-import ModelWithViews, { ModelOptionsWithViews } from './ModelWithViews';
+import Model, { ModelOptionsWithViews } from './ModelWithViews';
 
-type ModelIterator = (model: typeof ModelWithViews, name: string) => void;
+type ModelIterator = (model: typeof Model, name: string) => void;
 
 interface ForEachModelOptions {
   reverse?: boolean;
@@ -20,8 +17,15 @@ interface ModelManagerWithViews extends ModelManager {
   ) => void;
 }
 
-const isModelWithViewSupport = (model: any): model is typeof ModelWithViews =>
+const isModelWithView = (model: any): model is typeof Model =>
   model && model.options && model.options.treatAsView;
+
+const isModelWithMaterializedView = (model: any): model is typeof Model =>
+  model && model.options && model.options.treatAsMaterializedView;
+
+export interface DropViewOptions {
+  cascade?: boolean;
+}
 
 /**
  * Extended query interface including support for creating and dropping views
@@ -30,12 +34,24 @@ const isModelWithViewSupport = (model: any): model is typeof ModelWithViews =>
  * @interface QueryInterfaceWithViews
  * @extends {QueryInterface}
  */
-export interface QueryInterfaceWithViews extends QueryInterface {
-  dropView: (viewName: any, options: any) => Promise<[unknown[], unknown]>;
+export interface QueryInterfaceWithViews extends SequelizeOrig.QueryInterface {
+  dropView: (
+    viewName: any,
+    options?: DropViewOptions
+  ) => Promise<[unknown[], unknown]>;
   createView: (
     viewName: any,
     viewDefinition: string
   ) => Promise<[unknown[], unknown]>;
+  dropMaterializedView: (
+    viewName: any,
+    options: any
+  ) => Promise<[unknown[], unknown]>;
+  createMaterializedView: (
+    viewName: any,
+    viewDefinition: string
+  ) => Promise<[unknown[], unknown]>;
+  refreshMaterializedView: (viewName: any) => Promise<[unknown[], unknown]>;
 }
 
 /**
@@ -44,18 +60,47 @@ export interface QueryInterfaceWithViews extends QueryInterface {
  * @class SequelizeWithViews
  * @extends {Sequelize.Sequelize}
  */
-class SequelizeWithViews extends Sequelize.Sequelize {
+export class Sequelize extends SequelizeOrig.Sequelize {
   queryInterface: QueryInterfaceWithViews;
   modelManager: ModelManagerWithViews;
   /** @inheritdoc */
   getQueryInterface(): QueryInterfaceWithViews {
     super.getQueryInterface();
 
-    if (typeof this.queryInterface.dropView !== 'function') {
-      this.queryInterface.dropView = function(
+    if (typeof this.queryInterface.dropMaterializedView !== 'function') {
+      this.queryInterface.dropMaterializedView = function(
         viewName: any
       ): Promise<[unknown[], unknown]> {
         const sql = `DROP MATERIALIZED VIEW IF EXISTS ${viewName}`;
+        return this.sequelize.query(sql);
+      };
+    }
+
+    if (typeof this.queryInterface.createMaterializedView != 'function') {
+      this.queryInterface.createMaterializedView = function(
+        viewName: any,
+        viewDefinition: string
+      ): Promise<[unknown[], unknown]> {
+        return this.sequelize.query(viewDefinition);
+      };
+    }
+
+    if (typeof this.queryInterface.refreshMaterializedView != 'function') {
+      this.queryInterface.refreshMaterializedView = function(
+        viewName: any
+      ): Promise<[unknown[], unknown]> {
+        return this.sequelize.query(`REFRESH MATERIALIZED VIEW ${viewName};`);
+      };
+    }
+
+    if (typeof this.queryInterface.dropView !== 'function') {
+      this.queryInterface.dropView = function(
+        viewName: any,
+        options: DropViewOptions = {}
+      ): Promise<[unknown[], unknown]> {
+        const sql = `
+      DROP VIEW IF EXISTS "${viewName}"${options.cascade ? ' CASCADE' : ''}
+    `;
         return this.sequelize.query(sql);
       };
     }
@@ -75,12 +120,12 @@ class SequelizeWithViews extends Sequelize.Sequelize {
   /** @inheritdoc */
   public define(
     modelName: string,
-    attributes: ModelAttributes,
-    options: ModelOptionsWithViews
-  ): typeof ModelWithViews {
+    attributes: SequelizeOrig.ModelAttributes,
+    options?: ModelOptionsWithViews<Model>
+  ): typeof Model {
     options = options || {};
 
-    const ModelClone = class extends ModelWithViews {};
+    const ModelClone = class extends Model {};
 
     ModelClone.init(attributes, { ...options, modelName, sequelize: this });
 
@@ -88,8 +133,12 @@ class SequelizeWithViews extends Sequelize.Sequelize {
   }
 
   /** @inheritdoc */
-  sync(options: SyncOptions): any {
-    return super.sync(options).then(() => this.syncViews());
+  public sync(options?: SequelizeOrig.SyncOptions): any {
+    return super
+      .sync(options)
+      .then(() =>
+        Promise.all([this.syncViews(), this.syncMaterializedViews()])
+      );
   }
 
   /**
@@ -107,16 +156,44 @@ class SequelizeWithViews extends Sequelize.Sequelize {
   /**
    * Gets all the defined models which represent views
    *
-   * @returns {typeof ModelWithViews[]} An array containing all view models
+   * @returns {typeof Model[]} An array containing all view models
    * @memberof SequelizeWithViews
    */
-  getViews(): typeof ModelWithViews[] {
-    const models: typeof ModelWithViews[] = [];
+  getViews(): typeof Model[] {
+    const models: typeof Model[] = [];
     this.modelManager.forEachModel(function(model) {
-      if (isModelWithViewSupport(model)) models.push(model);
+      if (isModelWithView(model)) models.push(model);
+    });
+    return models;
+  }
+
+  /**
+   * Executes the create materialized view query for each of the definitions
+   *
+   * @returns {Promise<any[]>} The results of the create view queries
+   * @memberof SequelizeWithViews
+   */
+  syncMaterializedViews(): Promise<any[]> {
+    const materializedViews = this.getMaterializedViews();
+
+    return Promise.all(
+      materializedViews.map(view => view.syncMaterializedView())
+    );
+  }
+
+  /**
+   * Gets all the defined models which represent materialized views
+   *
+   * @returns {typeof Model[]} An array containing all materialized view models
+   * @memberof SequelizeWithViews
+   */
+  getMaterializedViews(): typeof Model[] {
+    const models: typeof Model[] = [];
+    this.modelManager.forEachModel(function(model) {
+      if (isModelWithMaterializedView(model)) models.push(model);
     });
     return models;
   }
 }
 
-export default SequelizeWithViews;
+export default Sequelize;
