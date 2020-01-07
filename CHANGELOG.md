@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.1.0...v2.2.0) (2020-01-07)
+
+
+### Features
+
+* migrate to typescript ([c117d44](https://github.com/sugarandmagic/sequelize-mv-support/commit/c117d444f6b20da124249a3c8aa41a8fb87921bc))
+
 # [2.1.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.0.1...v2.1.0) (2019-12-20)
 
 
