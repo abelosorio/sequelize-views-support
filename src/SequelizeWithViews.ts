@@ -103,7 +103,9 @@ export class Sequelize extends SequelizeOrig.Sequelize {
         viewName: any,
         viewDefinition: string
       ): Promise<[unknown[], unknown]> {
-        return this.sequelize.query(viewDefinition);
+        return this.sequelize.query(
+          `CREATE MATERIALIZED VIEW IF NOT EXISTS "${viewName}" AS ${viewDefinition}`
+        );
       };
     }
 
@@ -120,9 +122,9 @@ export class Sequelize extends SequelizeOrig.Sequelize {
         viewName: any,
         options: DropViewOptions = {}
       ): Promise<[unknown[], unknown]> {
-        const sql = `
-      DROP VIEW IF EXISTS "${viewName}"${options.cascade ? ' CASCADE' : ''}
-    `;
+        const sql = `DROP VIEW IF EXISTS "${viewName}"${
+          options.cascade ? ' CASCADE' : ''
+        }`;
         return this.sequelize.query(sql);
       };
     }
@@ -132,7 +134,9 @@ export class Sequelize extends SequelizeOrig.Sequelize {
         viewName: any,
         viewDefinition: string
       ): Promise<[unknown[], unknown]> {
-        return this.sequelize.query(viewDefinition);
+        return this.sequelize.query(
+          `CREATE OR REPLACE VIEW "${viewName}" AS ${viewDefinition}`
+        );
       };
     }
 

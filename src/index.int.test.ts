@@ -110,7 +110,7 @@ describe('SequelizeWithViews', () => {
         {
           freezeTableName: true,
           treatAsView: true,
-          viewDefinition: `CREATE OR REPLACE VIEW "${viewName}" AS SELECT id, name from items`,
+          viewDefinition: 'SELECT id, name from items',
         }
       );
       await sequelize.sync();
@@ -145,7 +145,7 @@ describe('SequelizeWithViews', () => {
         {
           freezeTableName: true,
           treatAsView: true,
-          viewDefinition: `CREATE OR REPLACE VIEW "${viewName}" AS SELECT id, name from items`,
+          viewDefinition: 'SELECT id, name from items',
         }
       );
       await sequelize.sync();
@@ -178,7 +178,7 @@ describe('SequelizeWithViews', () => {
         {
           freezeTableName: true,
           treatAsView: true,
-          viewDefinition: `CREATE OR REPLACE VIEW "${viewName}" AS SELECT id, name from items`,
+          viewDefinition: 'SELECT id, name from items',
         }
       );
       await sequelize.sync();
@@ -216,7 +216,7 @@ describe('SequelizeWithViews', () => {
         {
           freezeTableName: true,
           treatAsMaterializedView: true,
-          materializedViewDefinition: `CREATE MATERIALIZED VIEW IF NOT EXISTS "${viewName}" AS SELECT id, name from items`,
+          materializedViewDefinition: 'SELECT id, name from items',
         }
       );
       await sequelize.sync();
@@ -250,7 +250,7 @@ describe('SequelizeWithViews', () => {
         {
           freezeTableName: true,
           treatAsMaterializedView: true,
-          materializedViewDefinition: `CREATE MATERIALIZED VIEW IF NOT EXISTS "${viewName}" AS SELECT id, name from items`,
+          materializedViewDefinition: 'SELECT id, name from items',
         }
       );
       await sequelize.sync();
@@ -283,7 +283,7 @@ describe('SequelizeWithViews', () => {
         {
           freezeTableName: true,
           treatAsMaterializedView: true,
-          materializedViewDefinition: `CREATE MATERIALIZED VIEW IF NOT EXISTS "${viewName}" AS SELECT id, name from items`,
+          materializedViewDefinition: 'SELECT id, name from items',
         }
       );
       await sequelize.sync();
