@@ -25,7 +25,7 @@ module.exports = {
         functions: 'never',
       },
     ],
-    quotes: ['error', 'single'],
+    quotes: ['error', 'single', { avoidEscape: true }],
     'node/no-unpublished-require': [
       'error',
       {
