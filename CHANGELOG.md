@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.2.0...v3.0.0) (2020-01-08)
+
+
+### Features
+
+* add support for both views and materialized views ([59d9c4e](https://github.com/sugarandmagic/sequelize-mv-support/commit/59d9c4eabdd87e9a22000bbc1fe10bf7a1c0d6ae))
+* view definitions are now just the regular sql query ([53402c8](https://github.com/sugarandmagic/sequelize-mv-support/commit/53402c8d591c5a9404f74ed9b61bd43c85f8a78d))
+* **schema:** add support for custom schemas in views ([13bb753](https://github.com/sugarandmagic/sequelize-mv-support/commit/13bb753a4fa7281e5f30992f30f547e3b23e84f2))
+* **types:** export all types at module, default, and Sequelize ([510ddf7](https://github.com/sugarandmagic/sequelize-mv-support/commit/510ddf7bf1ca774b68d158cadfd84f06a9fa5f65))
+
+
+### BREAKING CHANGES
+
+* View definition no longer includes CREATE ... AS component
+* View methods now refer to regular views. Materialized views have new function and
+option names.
+
 # [2.2.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.1.0...v2.2.0) (2020-01-07)
 
 
