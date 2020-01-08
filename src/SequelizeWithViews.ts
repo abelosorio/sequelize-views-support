@@ -93,11 +93,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
       this.queryInterface.dropMaterializedView = function(
         viewName: any
       ): Promise<[unknown[], unknown]> {
-        const sql = `DROP MATERIALIZED VIEW IF EXISTS ${
-          this.sequelize.options.define.schema
-            ? `"${this.sequelize.options.define.schema}".`
-            : ''
-        }"${viewName}"`;
+        const sql = `DROP MATERIALIZED VIEW IF EXISTS ${viewName}`;
         return this.sequelize.query(sql);
       };
     }
@@ -108,11 +104,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
         viewDefinition: string
       ): Promise<[unknown[], unknown]> {
         return this.sequelize.query(
-          `CREATE MATERIALIZED VIEW IF NOT EXISTS ${
-            this.sequelize.options.define.schema
-              ? `"${this.sequelize.options.define.schema}".`
-              : ''
-          }"${viewName}" AS ${viewDefinition}`
+          `CREATE MATERIALIZED VIEW IF NOT EXISTS ${viewName} AS ${viewDefinition}`
         );
       };
     }
@@ -121,13 +113,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
       this.queryInterface.refreshMaterializedView = function(
         viewName: any
       ): Promise<[unknown[], unknown]> {
-        return this.sequelize.query(
-          `REFRESH MATERIALIZED VIEW ${
-            this.sequelize.options.define.schema
-              ? `"${this.sequelize.options.define.schema}".`
-              : ''
-          }"${viewName}"`
-        );
+        return this.sequelize.query(`REFRESH MATERIALIZED VIEW ${viewName}`);
       };
     }
 
@@ -136,11 +122,9 @@ export class Sequelize extends SequelizeOrig.Sequelize {
         viewName: any,
         options: DropViewOptions = {}
       ): Promise<[unknown[], unknown]> {
-        const sql = `DROP VIEW IF EXISTS ${
-          this.sequelize.options.define.schema
-            ? `"${this.sequelize.options.define.schema}".`
-            : ''
-        }"${viewName}"${options.cascade ? ' CASCADE' : ''}`;
+        const sql = `DROP VIEW IF EXISTS ${viewName}${
+          options.cascade ? ' CASCADE' : ''
+        }`;
         return this.sequelize.query(sql);
       };
     }
@@ -151,11 +135,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
         viewDefinition: string
       ): Promise<[unknown[], unknown]> {
         return this.sequelize.query(
-          `CREATE OR REPLACE VIEW ${
-            this.sequelize.options.define.schema
-              ? `"${this.sequelize.options.define.schema}".`
-              : ''
-          }"${viewName}" AS ${viewDefinition}`
+          `CREATE OR REPLACE VIEW ${viewName} AS ${viewDefinition}`
         );
       };
     }
