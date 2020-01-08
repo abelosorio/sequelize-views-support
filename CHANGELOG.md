@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.0...v3.0.1) (2020-01-08)
+
+
+### Bug Fixes
+
+* **schema:** fix garbled schema names ([64a78b6](https://github.com/sugarandmagic/sequelize-mv-support/commit/64a78b60895cbfd375864067db27add9a1878b0b))
+
 # [3.0.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v2.2.0...v3.0.0) (2020-01-08)
 
 
