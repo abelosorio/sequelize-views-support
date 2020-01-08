@@ -3,6 +3,13 @@ kind: pipeline
 type: docker
 name: default
 
+services:
+  - name: database-drone
+    image: postgres
+    environment:
+      POSTGRES_USER: integration
+      POSTGRES_DB: postgres
+
 steps:
   - name: npm-login
     image: node:dubnium-jessie
@@ -16,10 +23,16 @@ steps:
     commands:
       - npm ci
       - npm run build
-  - name: test
+  - name: unit-test
+    group: test
     image: node:dubnium-jessie
     commands:
       - npm test
+  - name: integration-test
+    group: test
+    image: node:dubnium-jessie
+    commands:
+      - npm run test:int
   - name: publish
     image: node:dubnium-jessie
     environment:

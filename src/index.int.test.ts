@@ -8,7 +8,7 @@ const dbname = `views_${Date.now()}`;
 
 const c = {
   drone: {
-    user: 'postgres',
+    user: 'integration',
     readHost: 'database-drone',
     host: 'database-drone',
     password: '',
@@ -29,7 +29,7 @@ const c = {
   },
 };
 
-const config = process.env.CI === 'drone' ? c.drone : c.local;
+const config = process.env.CI ? c.drone : c.local;
 const { user, host, password, port } = config;
 
 let pool: Pool<Client>, client: Client & PoolClient, sequelize;

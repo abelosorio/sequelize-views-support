@@ -1,5 +1,5 @@
 export * from 'sequelize';
-import SequelizeOrig from 'sequelize';
+import SequelizeOrig, { DataTypes } from 'sequelize';
 import ModelManager from 'sequelize/types/lib/model-manager';
 
 import Model, { ModelOptionsWithViews } from './ModelWithViews';
@@ -61,8 +61,30 @@ export interface QueryInterfaceWithViews extends SequelizeOrig.QueryInterface {
  * @extends {Sequelize.Sequelize}
  */
 export class Sequelize extends SequelizeOrig.Sequelize {
-  queryInterface: QueryInterfaceWithViews;
-  modelManager: ModelManagerWithViews;
+  private queryInterface: QueryInterfaceWithViews;
+  public modelManager: ModelManagerWithViews;
+
+  public static DECIMAL: typeof SequelizeOrig.DECIMAL;
+  public static BLOB: typeof DataTypes.BLOB;
+  public static STRING: typeof DataTypes.STRING;
+  public static CHAR: typeof DataTypes.CHAR;
+  public static TEXT: typeof DataTypes.TEXT;
+  public static CITEXT: typeof DataTypes.CITEXT;
+  public static TINYINT: typeof DataTypes.TINYINT;
+  public static SMALLINT: typeof DataTypes.SMALLINT;
+  public static INTEGER: typeof DataTypes.INTEGER;
+  public static BIGINT: typeof DataTypes.BIGINT;
+  public static BOOLEAN: typeof DataTypes.BOOLEAN;
+  public static DATE: typeof DataTypes.DATE;
+  public static DATEONLY: typeof DataTypes.DATEONLY;
+  public static REAL: typeof DataTypes.REAL;
+  public static FLOAT: typeof DataTypes.FLOAT;
+  public static GEOMETRY: typeof DataTypes.GEOMETRY;
+  public static GEOGRAPHY: typeof DataTypes.GEOGRAPHY;
+  public static HSTORE: typeof DataTypes.HSTORE;
+  public static RANGE: typeof DataTypes.RANGE;
+  public static ENUM: typeof DataTypes.ENUM;
+
   /** @inheritdoc */
   getQueryInterface(): QueryInterfaceWithViews {
     super.getQueryInterface();
