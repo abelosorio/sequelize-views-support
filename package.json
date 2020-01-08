@@ -74,7 +74,7 @@
     "eslint-plugin-jest": "^23.3.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.0.0",
+    "husky": "^4.0.1",
     "jest": "^24.9.0",
     "npm-check-updates": "^4.0.1",
     "pg-pool": "^2.0.9",
@@ -133,6 +133,7 @@
           "assets": [
             "package.json",
             "CHANGELOG.md",
+            "README.md",
             "docs/**"
           ]
         }
