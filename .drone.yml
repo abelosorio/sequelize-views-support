@@ -48,4 +48,5 @@ steps:
     commands:
       - npm whoami
       - npm run build
+      - npm run documentation
       - npm run release

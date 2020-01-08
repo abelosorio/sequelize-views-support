@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "dependabump": "ncu -u && rm -rf package-lock.json node_modules | true && npm i",
+    "documentation": "documentation readme src/*WithViews.ts --github --require-extension=ts --require-extension=js --parse-extension=ts --external='sequelize/**/*.js' --babel=./.babelrc --section=api",
     "test": "npm run test:unit",
     "test:unit": "jest unit.test",
     "test:int": "jest int.test",
@@ -66,6 +67,7 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "conventional-changelog-angular": "^5.0.6",
     "cz-conventional-changelog": "^3.0.2",
+    "documentation": "^12.1.4",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.19.1",

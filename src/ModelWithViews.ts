@@ -33,11 +33,11 @@ export type OptionsType = ModelOptionsWithViews<ModelOrig> & {
 };
 
 /**
- * Model abstract class with view support
+ * Model with view support added
  *
  * @export
  * @class Model
- * @extends {Model}
+ * @extends {ModelOrig}
  */
 export class Model extends ModelOrig {
   /** @inheritdoc */
