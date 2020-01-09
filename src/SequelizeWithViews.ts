@@ -1,5 +1,5 @@
 export * from 'sequelize';
-import SequelizeOrig, { DataTypes } from 'sequelize';
+import SequelizeOrig, { DataTypes, Options } from 'sequelize';
 import ModelManager from 'sequelize/types/lib/model-manager';
 
 import Model, { ModelOptionsWithViews } from './ModelWithViews';
@@ -63,6 +63,7 @@ export interface QueryInterfaceWithViews extends SequelizeOrig.QueryInterface {
 export class Sequelize extends SequelizeOrig.Sequelize {
   private queryInterface: QueryInterfaceWithViews;
   public modelManager: ModelManagerWithViews;
+  public options: Options;
 
   public static ABSTRACT: typeof SequelizeOrig.ABSTRACT;
   public static ARRAY: typeof SequelizeOrig.ARRAY;
