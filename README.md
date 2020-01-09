@@ -150,7 +150,7 @@ That's it. Take into account that views will be created after syncing all your m
 
 ### ModelOptionsWithViews
 
-[src/ModelWithViews.ts:17-23](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L17-L23 "Source code on GitHub")
+[src/ModelWithViews.ts:17-23](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L17-L23 "Source code on GitHub")
 
 **Extends ModelOptions**
 
@@ -158,7 +158,7 @@ Interface describing the options property on a model
 
 ### Model
 
-[src/ModelWithViews.ts:42-128](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L42-L128 "Source code on GitHub")
+[src/ModelWithViews.ts:42-128](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L42-L128 "Source code on GitHub")
 
 **Extends ModelOrig**
 
@@ -166,19 +166,19 @@ Model with view support added
 
 #### options
 
-[src/ModelWithViews.ts:44-44](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L44-L44 "Source code on GitHub")
+[src/ModelWithViews.ts:44-44](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L44-L44 "Source code on GitHub")
 
 Type: OptionsType
 
 #### QueryInterface
 
-[src/ModelWithViews.ts:47-47](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L47-L47 "Source code on GitHub")
+[src/ModelWithViews.ts:47-47](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L47-L47 "Source code on GitHub")
 
 Type: [QueryInterfaceWithViews](#queryinterfacewithviews)
 
 #### drop
 
-[src/ModelWithViews.ts:50-58](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L50-L58 "Source code on GitHub")
+[src/ModelWithViews.ts:50-58](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L50-L58 "Source code on GitHub")
 
 ##### Parameters
 
@@ -188,7 +188,7 @@ Returns **any**
 
 #### sync
 
-[src/ModelWithViews.ts:61-66](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L61-L66 "Source code on GitHub")
+[src/ModelWithViews.ts:61-66](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L61-L66 "Source code on GitHub")
 
 ##### Parameters
 
@@ -198,7 +198,7 @@ Returns **any**
 
 #### syncView
 
-[src/ModelWithViews.ts:75-80](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L75-L80 "Source code on GitHub")
+[src/ModelWithViews.ts:75-80](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L75-L80 "Source code on GitHub")
 
 Executes the query to create a view
 
@@ -206,7 +206,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 #### syncMaterializedView
 
-[src/ModelWithViews.ts:89-94](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L89-L94 "Source code on GitHub")
+[src/ModelWithViews.ts:89-94](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L89-L94 "Source code on GitHub")
 
 Executes the query to create a materialized view
 
@@ -214,7 +214,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 #### getViewDefinition
 
-[src/ModelWithViews.ts:103-105](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L103-L105 "Source code on GitHub")
+[src/ModelWithViews.ts:103-105](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L103-L105 "Source code on GitHub")
 
 Gets the sql definition for this view
 
@@ -222,7 +222,7 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 #### getMaterializedViewDefinition
 
-[src/ModelWithViews.ts:114-116](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L114-L116 "Source code on GitHub")
+[src/ModelWithViews.ts:114-116](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L114-L116 "Source code on GitHub")
 
 Gets the sql definition for this materialized view
 
@@ -230,7 +230,7 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 #### refreshMaterializedView
 
-[src/ModelWithViews.ts:125-127](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/ModelWithViews.ts#L125-L127 "Source code on GitHub")
+[src/ModelWithViews.ts:125-127](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/ModelWithViews.ts#L125-L127 "Source code on GitHub")
 
 Refreshes the materialized view in the database
 
@@ -238,7 +238,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ### QueryInterfaceWithViews
 
-[src/SequelizeWithViews.ts:37-55](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L37-L55 "Source code on GitHub")
+[src/SequelizeWithViews.ts:37-55](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L37-L55 "Source code on GitHub")
 
 **Extends SequelizeOrig.QueryInterface**
 
@@ -246,7 +246,7 @@ Extended query interface including support for creating and dropping views
 
 ### Sequelize
 
-[src/SequelizeWithViews.ts:63-337](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L63-L337 "Source code on GitHub")
+[src/SequelizeWithViews.ts:63-338](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L63-L338 "Source code on GitHub")
 
 **Extends SequelizeOrig.Sequelize**
 
@@ -254,13 +254,13 @@ Sequelize class with view support
 
 #### getQueryInterface
 
-[src/SequelizeWithViews.ts:105-160](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L105-L160 "Source code on GitHub")
+[src/SequelizeWithViews.ts:106-161](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L106-L161 "Source code on GitHub")
 
 Returns **[QueryInterfaceWithViews](#queryinterfacewithviews)** 
 
 #### define
 
-[src/SequelizeWithViews.ts:247-259](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L247-L259 "Source code on GitHub")
+[src/SequelizeWithViews.ts:248-260](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L248-L260 "Source code on GitHub")
 
 Define a new model, representing a table in the database.
 
@@ -351,7 +351,7 @@ Returns **[Model](#model)** Newly defined model
 
 #### sync
 
-[src/SequelizeWithViews.ts:276-282](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L276-L282 "Source code on GitHub")
+[src/SequelizeWithViews.ts:277-283](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L277-L283 "Source code on GitHub")
 
 Sync all defined models to the DB.
 
@@ -371,7 +371,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 #### syncViews
 
-[src/SequelizeWithViews.ts:290-294](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L290-L294 "Source code on GitHub")
+[src/SequelizeWithViews.ts:291-295](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L291-L295 "Source code on GitHub")
 
 Executes the create view query for each of the view definitions
 
@@ -379,7 +379,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 #### getViews
 
-[src/SequelizeWithViews.ts:302-308](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L302-L308 "Source code on GitHub")
+[src/SequelizeWithViews.ts:303-309](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L303-L309 "Source code on GitHub")
 
 Gets all the defined models which represent views
 
@@ -387,7 +387,7 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 
 #### syncMaterializedViews
 
-[src/SequelizeWithViews.ts:316-322](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L316-L322 "Source code on GitHub")
+[src/SequelizeWithViews.ts:317-323](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L317-L323 "Source code on GitHub")
 
 Executes the create materialized view query for each of the definitions
 
@@ -395,7 +395,7 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 #### getMaterializedViews
 
-[src/SequelizeWithViews.ts:330-336](https://github.com/sugarandmagic/sequelize-mv-support/blob/b2d68154abc01cde60d92be4406e83f8ffa10ef7/src/SequelizeWithViews.ts#L330-L336 "Source code on GitHub")
+[src/SequelizeWithViews.ts:331-337](https://github.com/sugarandmagic/sequelize-mv-support/blob/7de956d457bd2fdd597163781b5b9b17f6e32d27/src/SequelizeWithViews.ts#L331-L337 "Source code on GitHub")
 
 Gets all the defined models which represent materialized views
 
