@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.2...v3.0.3) (2020-01-09)
+
+
+### Bug Fixes
+
+* **sequelize:** expose the options opject publicly ([9870435](https://github.com/sugarandmagic/sequelize-mv-support/commit/9870435228f5a2a642e88b4df1d3b34ef26a8bca))
+
 ## [3.0.2](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.1...v3.0.2) (2020-01-09)
 
 
