@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.1...v3.0.2) (2020-01-09)
+
+
+### Bug Fixes
+
+* **sequelize:** add missing datatypes to Sequelize class ([d93ee08](https://github.com/sugarandmagic/sequelize-mv-support/commit/d93ee0890c2880e0f0be7c9c19100e9b6cea4eb9))
+
 ## [3.0.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.0...v3.0.1) (2020-01-08)
 
 
