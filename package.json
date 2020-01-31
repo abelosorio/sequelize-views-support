@@ -37,18 +37,18 @@
   },
   "homepage": "https://github.com/sugarandmagic/sequelize-mv-support#readme",
   "dependencies": {
-    "pg": "^7.17.1",
+    "pg": "^7.18.1",
     "sequelize": "^6.0.0-beta.4"
   },
   "engines": {
-    "node": ">=10.16.0"
+    "node": ">=12.14.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/node": "^7.8.3",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@babel/preset-stage-0": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
@@ -60,8 +60,8 @@
     "@semantic-release/npm": "^7.0.0",
     "@semantic-release/release-notes-generator": "^9.0.0",
     "@types/bluebird": "^3.5.29",
-    "@types/jest": "^25.1.0",
-    "@types/node": "^13.5.0",
+    "@types/jest": "^25.1.1",
+    "@types/node": "^13.5.3",
     "@types/pg-pool": "^2.0.2",
     "@types/validator": "^12.0.1",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
@@ -81,10 +81,10 @@
     "husky": "^4.2.1",
     "jest": "^25.1.0",
     "npm-check-updates": "^4.0.1",
-    "pg-pool": "^2.0.9",
+    "pg-pool": "^2.0.10",
     "prettier": "^1.19.1",
-    "semantic-release": "^17.0.0",
-    "ts-jest": "^25.0.0",
+    "semantic-release": "^17.0.1",
+    "ts-jest": "^25.1.0",
     "typescript": "^3.7.5"
   },
   "config": {
