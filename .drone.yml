@@ -12,29 +12,29 @@ services:
 
 steps:
   - name: npm-login
-    image: node:dubnium-jessie
+    image: node:erbium-buster
     environment:
       NPM_TOKEN:
         from_secret: NPM_TOKEN
     commands:
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
   - name: bootstrap
-    image: node:dubnium-jessie
+    image: node:erbium-buster
     commands:
       - npm ci
       - npm run build
   - name: unit-test
     group: test
-    image: node:dubnium-jessie
+    image: node:erbium-buster
     commands:
       - npm test
   - name: integration-test
     group: test
-    image: node:dubnium-jessie
+    image: node:erbium-buster
     commands:
       - npm run test:int
   - name: publish
-    image: node:dubnium-jessie
+    image: node:erbium-buster
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
