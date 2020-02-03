@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.3...v4.0.0) (2020-02-03)
+
+
+### Features
+
+* **node12:** use node 12 internally and bump deps ([7c6a601](https://github.com/sugarandmagic/sequelize-mv-support/commit/7c6a6010143dddd76d84e779383b5a6bc6921076))
+* **node12:** use node 12 internally and bump deps ([ae3267b](https://github.com/sugarandmagic/sequelize-mv-support/commit/ae3267b656f03c341e211d457460215d48b1fb54))
+
+
+### BREAKING CHANGES
+
+* **node12:** node 12 internally may not be compatible
+* **node12:** node 12 internally may not be compatible
+
 ## [3.0.3](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.2...v3.0.3) (2020-01-09)
 
 
