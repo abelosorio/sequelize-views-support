@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.0.0...v4.0.1) (2020-02-17)
+
+
+### Bug Fixes
+
+* **drone:** fix pg docker image to image: 'postgres:10.7' ([cce3a9b](https://github.com/sugarandmagic/sequelize-mv-support/commit/cce3a9bd4345f2dfc1d0a03a351c9d9fda6e123b))
+
 # [4.0.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v3.0.3...v4.0.0) (2020-02-03)
 
 
