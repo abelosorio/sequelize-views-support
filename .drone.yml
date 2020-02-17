@@ -5,7 +5,7 @@ name: default
 
 services:
   - name: database-drone
-    image: postgres
+    image: 'postgres:10.7'
     environment:
       POSTGRES_USER: integration
       POSTGRES_DB: postgres
