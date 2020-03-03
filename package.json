@@ -37,18 +37,18 @@
   },
   "homepage": "https://github.com/sugarandmagic/sequelize-mv-support#readme",
   "dependencies": {
-    "pg": "^7.18.1",
-    "sequelize": "^6.0.0-beta.4"
+    "pg": "^7.18.2",
+    "sequelize": "^5.21.5"
   },
   "engines": {
     "node": ">=10.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.8.6",
     "@babel/node": "^7.8.4",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-env": "^7.8.6",
     "@babel/preset-stage-0": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
@@ -56,17 +56,17 @@
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.0.3",
+    "@semantic-release/github": "^7.0.4",
     "@semantic-release/npm": "^7.0.3",
-    "@semantic-release/release-notes-generator": "^9.0.0",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "@types/bluebird": "^3.5.29",
     "@types/jest": "^25.1.3",
-    "@types/node": "^13.7.4",
+    "@types/node": "^13.7.6",
     "@types/pg-pool": "^2.0.2",
     "@types/validator": "^12.0.1",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "babel-eslint": "^10.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
     "babel-plugin-add-module-exports": "^1.0.2",
     "conventional-changelog-angular": "^5.0.6",
@@ -75,17 +75,17 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "npm-check-updates": "^4.0.1",
+    "npm-check-updates": "^4.0.2",
     "pg-pool": "^2.0.10",
     "prettier": "^1.19.1",
     "semantic-release": "^17.0.4",
     "ts-jest": "^25.2.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.2"
   },
   "config": {
     "commitizen": {
