@@ -291,7 +291,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
   syncViews(): Promise<any[]> {
     const views = this.getViews();
 
-    return Promise.all(views.map(view => view.syncView()));
+    return Promise.all(views.map((view) => view.syncView()));
   }
 
   /**
@@ -318,7 +318,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     const materializedViews = this.getMaterializedViews();
 
     return Promise.all(
-      materializedViews.map(view => view.syncMaterializedView())
+      materializedViews.map((view) => view.syncMaterializedView())
     );
   }
 
