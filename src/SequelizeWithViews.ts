@@ -107,7 +107,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     super.getQueryInterface();
 
     if (typeof this.queryInterface.dropMaterializedView !== 'function') {
-      this.queryInterface.dropMaterializedView = function(
+      this.queryInterface.dropMaterializedView = function (
         viewName: any
       ): Promise<[unknown[], unknown]> {
         const sql = `DROP MATERIALIZED VIEW IF EXISTS ${viewName}`;
@@ -116,7 +116,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     }
 
     if (typeof this.queryInterface.createMaterializedView != 'function') {
-      this.queryInterface.createMaterializedView = function(
+      this.queryInterface.createMaterializedView = function (
         viewName: any,
         viewDefinition: string
       ): Promise<[unknown[], unknown]> {
@@ -127,7 +127,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     }
 
     if (typeof this.queryInterface.refreshMaterializedView != 'function') {
-      this.queryInterface.refreshMaterializedView = function(
+      this.queryInterface.refreshMaterializedView = function (
         viewName: any
       ): Promise<[unknown[], unknown]> {
         return this.sequelize.query(`REFRESH MATERIALIZED VIEW ${viewName}`);
@@ -135,7 +135,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     }
 
     if (typeof this.queryInterface.dropView !== 'function') {
-      this.queryInterface.dropView = function(
+      this.queryInterface.dropView = function (
         viewName: any,
         options: DropViewOptions = {}
       ): Promise<[unknown[], unknown]> {
@@ -147,7 +147,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     }
 
     if (typeof this.queryInterface.createView != 'function') {
-      this.queryInterface.createView = function(
+      this.queryInterface.createView = function (
         viewName: any,
         viewDefinition: string
       ): Promise<[unknown[], unknown]> {
@@ -291,7 +291,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
   syncViews(): Promise<any[]> {
     const views = this.getViews();
 
-    return Promise.all(views.map(view => view.syncView()));
+    return Promise.all(views.map((view) => view.syncView()));
   }
 
   /**
@@ -302,7 +302,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
    */
   getViews(): typeof Model[] {
     const models: typeof Model[] = [];
-    this.modelManager.forEachModel(function(model) {
+    this.modelManager.forEachModel(function (model) {
       if (isModelWithView(model)) models.push(model);
     });
     return models;
@@ -318,7 +318,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
     const materializedViews = this.getMaterializedViews();
 
     return Promise.all(
-      materializedViews.map(view => view.syncMaterializedView())
+      materializedViews.map((view) => view.syncMaterializedView())
     );
   }
 
@@ -330,7 +330,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
    */
   getMaterializedViews(): typeof Model[] {
     const models: typeof Model[] = [];
-    this.modelManager.forEachModel(function(model) {
+    this.modelManager.forEachModel(function (model) {
       if (isModelWithMaterializedView(model)) models.push(model);
     });
     return models;

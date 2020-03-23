@@ -58,8 +58,8 @@ describe('SequelizeWithViews', () => {
       connectionTimeoutMillis: 60000,
     });
     client = await pool.connect();
-    pool.on('error', err => console.warn('pool', err));
-    client.on('error', err => console.warn('client', err));
+    pool.on('error', (err) => console.warn('pool', err));
+    client.on('error', (err) => console.warn('client', err));
     await client.query(`CREATE DATABASE ${dbname}`);
     sequelize = new Sequelize(dbname, user, password, {
       dialect: 'postgres',
@@ -96,7 +96,7 @@ describe('SequelizeWithViews', () => {
         name: Sequelize.STRING,
       });
       await sequelize.sync({ force: true });
-      await Promise.all(testItems.map(i => item.create(i)));
+      await Promise.all(testItems.map((i) => item.create(i)));
       const viewName = 'items_view';
       sequelize.define(
         viewName,
@@ -131,7 +131,7 @@ describe('SequelizeWithViews', () => {
         name: Sequelize.STRING,
       });
       await sequelize.sync({ force: true });
-      await Promise.all(testItems.map(i => item.create(i)));
+      await Promise.all(testItems.map((i) => item.create(i)));
       const viewName = 'items_view';
       const itemsView = sequelize.define(
         viewName,
@@ -164,7 +164,7 @@ describe('SequelizeWithViews', () => {
         name: Sequelize.STRING,
       });
       await sequelize.sync({ force: true });
-      await Promise.all(testItems.map(i => item.create(i)));
+      await Promise.all(testItems.map((i) => item.create(i)));
       const viewName = 'items_view';
       const itemsView = sequelize.define(
         viewName,
@@ -202,7 +202,7 @@ describe('SequelizeWithViews', () => {
         name: Sequelize.STRING,
       });
       await sequelize.sync({ force: true });
-      await Promise.all(testItems.map(i => item.create(i)));
+      await Promise.all(testItems.map((i) => item.create(i)));
       const viewName = 'items_mat_view';
       sequelize.define(
         viewName,
@@ -236,7 +236,7 @@ describe('SequelizeWithViews', () => {
         name: Sequelize.STRING,
       });
       await sequelize.sync({ force: true });
-      await Promise.all(testItems.map(i => item.create(i)));
+      await Promise.all(testItems.map((i) => item.create(i)));
       const viewName = 'items_mat_view';
       const itemsView = sequelize.define(
         viewName,
@@ -269,7 +269,7 @@ describe('SequelizeWithViews', () => {
         name: Sequelize.STRING,
       });
       await sequelize.sync({ force: true });
-      await Promise.all(testItems.map(i => item.create(i)));
+      await Promise.all(testItems.map((i) => item.create(i)));
       const viewName = 'items_mat_view';
       const itemsView = sequelize.define(
         viewName,
