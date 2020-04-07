@@ -81,7 +81,7 @@
     "husky": "^4.2.3",
     "jest": "^25.2.3",
     "npm-check-updates": "^4.1.0",
-    "pg-pool": "^2.0.10",
+    "pg-pool": "^3.0.0",
     "prettier": "^2.0.2",
     "semantic-release": "^17.0.4",
     "ts-jest": "^25.2.1",
