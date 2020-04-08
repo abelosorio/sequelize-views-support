@@ -63,7 +63,7 @@
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.3",
     "@types/pg-pool": "^2.0.2",
-    "@types/validator": "^12.0.1",
+    "@types/validator": "^13.0.0",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "babel-eslint": "^10.1.0",
