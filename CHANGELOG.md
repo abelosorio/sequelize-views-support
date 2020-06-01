@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.0.1...v4.0.2) (2020-06-01)
+
+
+### Bug Fixes
+
+* **deps:** setting to minor to auto publish dep bumps ([3a21f2e](https://github.com/sugarandmagic/sequelize-mv-support/commit/3a21f2ee4473b512a10d5501e2ce43a57ee8d4fe))
+
 ## [4.0.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.0.0...v4.0.1) (2020-02-17)
 
 
