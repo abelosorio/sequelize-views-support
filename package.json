@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/abelosorio/sequelize-views-support#readme",
   "dependencies": {
-    "pg": "^6.4.2",
+    "pg": "^8.5.1",
     "sequelize": "^6.0.0"
   },
   "devDependencies": {
