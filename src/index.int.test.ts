@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('pg').defaults.parseInt8 = true;
 import Pool from 'pg-pool';
 import Sequelize from './index';

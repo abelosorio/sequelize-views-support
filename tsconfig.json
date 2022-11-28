@@ -1,25 +1,49 @@
 {
   "compilerOptions": {
-      "baseUrl": ".",
-      "declaration": true,
-      "esModuleInterop": true,
-      "lib": ["es6", "es2020", "dom"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "noImplicitAny": true,
-      "outDir": "build",
-      "sourceMap": true,
-      "target": "es6",
-      "paths": {
-          "*": [
-              "node_modules/*"
-          ],
-      }
+    "allowJs": true,
+    "checkJs": true,
+    "incremental": false,
+    "isolatedModules": false,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "CommonJS",
+    "target": "ES2021",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": true,
+    "importHelpers": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": false,
+    "pretty": true,
+    "stripInternal": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noEmitOnError": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": false,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": true,
+    "importsNotUsedAsValues": "error",
+    "types": ["node"],
+    "outDir": "build",
   },
   "include": [
       "src/**/*"
   ],
   "exclude": [
-    "src/**/*.test.ts"
+    "src/**/*.test.ts",
+    "src/**/*.test.js",
   ]
 }
