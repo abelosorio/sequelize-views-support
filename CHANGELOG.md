@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.1.0...v4.1.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* explicitly export Model class ([862b6a1](https://github.com/sugarandmagic/sequelize-mv-support/commit/862b6a1d2474843134ecc0649072a1b64b9e3b92))
+
 # [4.1.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.0.2...v4.1.0) (2022-11-29)
 
 
