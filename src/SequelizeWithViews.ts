@@ -40,12 +40,13 @@ import {
   VIRTUAL,
   ModelAttributes,
   SyncOptions,
-  ModelCtor,
   Attributes,
 } from 'sequelize';
 import type ModelManager from 'sequelize/types/model-manager';
 
 import Model, { ModelOptionsWithViews } from './ModelWithViews';
+
+export type ModelCtor<M extends Model> = (new () => M) & typeof Model;
 
 type ModelIterator = (model: typeof Model, name: string) => void;
 
