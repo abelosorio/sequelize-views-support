@@ -49,7 +49,7 @@ export class Model<
   public static override readonly options: OptionsType;
 
   /** @inheritdoc */
-  public static QueryInterface: QueryInterfaceWithViews;
+  public static queryInterface: QueryInterfaceWithViews;
 
   /** @inheritdoc */
   public static override drop(options: DropOptionsType = {}): any {
@@ -59,7 +59,7 @@ export class Model<
       ? 'dropMaterializedView'
       : 'dropTable';
 
-    return this.QueryInterface[method](this.getTableName(), options);
+    return this.queryInterface[method](this.getTableName(), options);
   }
 
   /** @inheritdoc */
@@ -80,7 +80,7 @@ export class Model<
   public static syncView(): Promise<[unknown[], unknown]> {
     const definition = this.getViewDefinition();
     if (!definition) throw new Error('cannot sync view with no definition');
-    return this.QueryInterface.createView(this.getTableName(), definition);
+    return this.queryInterface.createView(this.getTableName(), definition);
   }
 
   /**
@@ -94,7 +94,7 @@ export class Model<
     const definition = this.getMaterializedViewDefinition();
     if (!definition)
       throw new Error('cannot sync materialised view with no definition');
-    return this.QueryInterface.createMaterializedView(
+    return this.queryInterface.createMaterializedView(
       this.getTableName(),
       definition
     );
@@ -130,7 +130,7 @@ export class Model<
    * @memberof Model
    */
   public static refreshMaterializedView(): Promise<[unknown[], unknown]> {
-    return this.QueryInterface.refreshMaterializedView(this.getTableName());
+    return this.queryInterface.refreshMaterializedView(this.getTableName());
   }
 }
 
