@@ -1,22 +1,13 @@
 {
   "presets": [
-      "@babel/preset-typescript",
-      [
-          "@babel/preset-env",
-          {
-              "targets": {
-                  "node": "10.16"
-              },
-              "corejs": 3,
-              "useBuiltIns": "usage"
-          }
-      ]
+    [
+      "@babel/preset-env",
+      { "targets": { "node": "16.13.0" }, "modules": "cjs" }
+    ],
+    ["@babel/preset-typescript"]
   ],
-  "plugins": ["add-module-exports"],
-  "env": {
-      "test": {
-          "plugins": []
-      }
-  },
+  "plugins": [
+    ["@babel/plugin-transform-typescript", { "allowDeclareFields": true }]
+  ],
   "sourceMaps": true
 }

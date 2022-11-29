@@ -5,7 +5,7 @@ import {
   SyncOptions,
 } from 'sequelize';
 
-import { Sequelize, QueryInterfaceWithViews } from './SequelizeWithViews';
+import type { Sequelize, QueryInterfaceWithViews } from './SequelizeWithViews';
 
 /**
  * Interface describing the options property on a model
@@ -39,26 +39,31 @@ export type OptionsType = ModelOptionsWithViews<ModelOrig> & {
  * @class Model
  * @extends {ModelOrig}
  */
-export class Model extends ModelOrig {
+export class Model<
+  /* eslint-disable @typescript-eslint/ban-types */
+  TModelAttributes extends {} = any,
+  TCreationAttributes extends {} = TModelAttributes
+  /* eslint-enable @typescript-eslint/ban-types */
+> extends ModelOrig<TModelAttributes, TCreationAttributes> {
   /** @inheritdoc */
-  public static readonly options: OptionsType;
+  public static override readonly options: OptionsType;
 
   /** @inheritdoc */
-  public static QueryInterface: QueryInterfaceWithViews;
+  public static queryInterface: QueryInterfaceWithViews;
 
   /** @inheritdoc */
-  public static drop(options: DropOptionsType = {}): any {
+  public static override drop(options: DropOptionsType = {}): any {
     const method = this.options.treatAsView
       ? 'dropView'
       : this.options.treatAsMaterializedView
       ? 'dropMaterializedView'
       : 'dropTable';
 
-    return this.QueryInterface[method](this.getTableName(), options);
+    return this.queryInterface[method](this.getTableName(), options);
   }
 
   /** @inheritdoc */
-  public static sync(options: SyncOptions): any {
+  public static override sync(options: SyncOptions): any {
     if (this.options.treatAsView || this.options.treatAsMaterializedView)
       return Promise.resolve();
 
@@ -73,10 +78,9 @@ export class Model extends ModelOrig {
    * @memberof Model
    */
   public static syncView(): Promise<[unknown[], unknown]> {
-    return this.QueryInterface.createView(
-      this.getTableName(),
-      this.getViewDefinition()
-    );
+    const definition = this.getViewDefinition();
+    if (!definition) throw new Error('cannot sync view with no definition');
+    return this.queryInterface.createView(this.getTableName(), definition);
   }
 
   /**
@@ -87,9 +91,12 @@ export class Model extends ModelOrig {
    * @memberof Model
    */
   public static syncMaterializedView(): Promise<[unknown[], unknown]> {
-    return this.QueryInterface.createMaterializedView(
+    const definition = this.getMaterializedViewDefinition();
+    if (!definition)
+      throw new Error('cannot sync materialised view with no definition');
+    return this.queryInterface.createMaterializedView(
       this.getTableName(),
-      this.getMaterializedViewDefinition()
+      definition
     );
   }
 
@@ -100,7 +107,7 @@ export class Model extends ModelOrig {
    * @returns {string} SQL query string to create a view
    * @memberof Model
    */
-  public static getViewDefinition(): string {
+  public static getViewDefinition(): string | undefined {
     return this.options.viewDefinition;
   }
 
@@ -111,7 +118,7 @@ export class Model extends ModelOrig {
    * @returns {string} SQL query string to create the materialized view
    * @memberof Model
    */
-  public static getMaterializedViewDefinition(): string {
+  public static getMaterializedViewDefinition(): string | undefined {
     return this.options.materializedViewDefinition;
   }
 
@@ -123,7 +130,7 @@ export class Model extends ModelOrig {
    * @memberof Model
    */
   public static refreshMaterializedView(): Promise<[unknown[], unknown]> {
-    return this.QueryInterface.refreshMaterializedView(this.getTableName());
+    return this.queryInterface.refreshMaterializedView(this.getTableName());
   }
 }
 

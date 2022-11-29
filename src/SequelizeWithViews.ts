@@ -1,6 +1,49 @@
 export * from 'sequelize';
-import SequelizeOrig, { DataTypes, Options } from 'sequelize';
-import ModelManager from 'sequelize/types/lib/model-manager';
+import {
+  Sequelize as SequelizeOrig,
+  Options,
+  QueryInterface,
+  ABSTRACT,
+  ARRAY,
+  BIGINT,
+  BLOB,
+  BOOLEAN,
+  CHAR,
+  CIDR,
+  CITEXT,
+  DATE,
+  DATEONLY,
+  DECIMAL,
+  DOUBLE,
+  ENUM,
+  FLOAT,
+  GEOGRAPHY,
+  GEOMETRY,
+  HSTORE,
+  INET,
+  INTEGER,
+  JSONB,
+  MACADDR,
+  MEDIUMINT,
+  NOW,
+  NUMBER,
+  RANGE,
+  REAL,
+  SMALLINT,
+  STRING,
+  TEXT,
+  TIME,
+  TINYINT,
+  UUID,
+  UUIDV1,
+  UUIDV4,
+  VIRTUAL,
+  ModelAttributes,
+  SyncOptions,
+  ModelCtor,
+  Attributes,
+} from 'sequelize';
+import type ModelManager from 'sequelize/types/model-manager';
 
 import Model, { ModelOptionsWithViews } from './ModelWithViews';
 
@@ -34,7 +77,7 @@ export interface DropViewOptions {
  * @interface QueryInterfaceWithViews
  * @extends {SequelizeOrig.QueryInterface}
  */
-export interface QueryInterfaceWithViews extends SequelizeOrig.QueryInterface {
+export interface QueryInterfaceWithViews extends QueryInterface {
   dropView: (
     viewName: any,
     options?: DropViewOptions
@@ -60,50 +103,50 @@ export interface QueryInterfaceWithViews extends SequelizeOrig.QueryInterface {
  * @class Sequelize
  * @extends {SequelizeOrig.Sequelize}
  */
-export class Sequelize extends SequelizeOrig.Sequelize {
-  private queryInterface: QueryInterfaceWithViews;
-  public modelManager: ModelManagerWithViews;
-  public options: Options;
+export class Sequelize extends SequelizeOrig {
+  private queryInterface!: QueryInterfaceWithViews;
+  public declare modelManager: ModelManagerWithViews;
+  public options!: Options;
 
-  public static ABSTRACT: typeof SequelizeOrig.ABSTRACT;
-  public static ARRAY: typeof SequelizeOrig.ARRAY;
-  public static BIGINT: typeof SequelizeOrig.BIGINT;
-  public static BLOB: typeof SequelizeOrig.BLOB;
-  public static BOOLEAN: typeof SequelizeOrig.BOOLEAN;
-  public static CHAR: typeof SequelizeOrig.CHAR;
-  public static CIDR: typeof SequelizeOrig.CIDR;
-  public static CITEXT: typeof SequelizeOrig.CITEXT;
-  public static DATE: typeof SequelizeOrig.DATE;
-  public static DATEONLY: typeof SequelizeOrig.DATEONLY;
-  public static DECIMAL: typeof SequelizeOrig.DECIMAL;
-  public static DOUBLE: typeof SequelizeOrig.DOUBLE;
-  public static ENUM: typeof SequelizeOrig.ENUM;
-  public static FLOAT: typeof SequelizeOrig.FLOAT;
-  public static GEOGRAPHY: typeof SequelizeOrig.GEOGRAPHY;
-  public static GEOMETRY: typeof SequelizeOrig.GEOMETRY;
-  public static HSTORE: typeof SequelizeOrig.HSTORE;
-  public static INET: typeof SequelizeOrig.INET;
-  public static INTEGER: typeof SequelizeOrig.INTEGER;
-  public static JSON: typeof SequelizeOrig.JSON;
-  public static JSONB: typeof SequelizeOrig.JSONB;
-  public static MACADDR: typeof SequelizeOrig.MACADDR;
-  public static MEDIUMINT: typeof SequelizeOrig.MEDIUMINT;
-  public static NOW: typeof SequelizeOrig.NOW;
-  public static NUMBER: typeof SequelizeOrig.NUMBER;
-  public static RANGE: typeof SequelizeOrig.RANGE;
-  public static REAL: typeof SequelizeOrig.REAL;
-  public static SMALLINT: typeof SequelizeOrig.SMALLINT;
-  public static STRING: typeof SequelizeOrig.STRING;
-  public static TEXT: typeof DataTypes.TEXT;
-  public static TIME: typeof SequelizeOrig.TIME;
-  public static TINYINT: typeof SequelizeOrig.TINYINT;
-  public static UUID: typeof SequelizeOrig.UUID;
-  public static UUIDV1: typeof SequelizeOrig.UUIDV1;
-  public static UUIDV4: typeof SequelizeOrig.UUIDV4;
-  public static VIRTUAL: typeof SequelizeOrig.VIRTUAL;
+  public static ABSTRACT: typeof ABSTRACT;
+  public static ARRAY: typeof ARRAY;
+  public static BIGINT: typeof BIGINT;
+  public static BLOB: typeof BLOB;
+  public static BOOLEAN: typeof BOOLEAN;
+  public static CHAR: typeof CHAR;
+  public static CIDR: typeof CIDR;
+  public static CITEXT: typeof CITEXT;
+  public static DATE: typeof DATE;
+  public static DATEONLY: typeof DATEONLY;
+  public static DECIMAL: typeof DECIMAL;
+  public static DOUBLE: typeof DOUBLE;
+  public static ENUM: typeof ENUM;
+  public static FLOAT: typeof FLOAT;
+  public static GEOGRAPHY: typeof GEOGRAPHY;
+  public static GEOMETRY: typeof GEOMETRY;
+  public static HSTORE: typeof HSTORE;
+  public static INET: typeof INET;
+  public static INTEGER: typeof INTEGER;
+  public static JSON: typeof JSON;
+  public static JSONB: typeof JSONB;
+  public static MACADDR: typeof MACADDR;
+  public static MEDIUMINT: typeof MEDIUMINT;
+  public static NOW: typeof NOW;
+  public static NUMBER: typeof NUMBER;
+  public static RANGE: typeof RANGE;
+  public static REAL: typeof REAL;
+  public static SMALLINT: typeof SMALLINT;
+  public static STRING: typeof STRING;
+  public static TEXT: typeof TEXT;
+  public static TIME: typeof TIME;
+  public static TINYINT: typeof TINYINT;
+  public static UUID: typeof UUID;
+  public static UUIDV1: typeof UUIDV1;
+  public static UUIDV4: typeof UUIDV4;
+  public static VIRTUAL: typeof VIRTUAL;
 
   /** @inheritdoc */
-  getQueryInterface(): QueryInterfaceWithViews {
+  override getQueryInterface(): QueryInterfaceWithViews {
     super.getQueryInterface();
 
     if (typeof this.queryInterface.dropMaterializedView !== 'function') {
@@ -245,18 +288,22 @@ export class Sequelize extends SequelizeOrig.Sequelize {
    *
    * sequelize.models.modelName // The model will now be available in models under the name given to define
    */
-  public define(
+  public override define<
+    M extends Model,
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    TAttributes extends {} = Attributes<M>
+  >(
     modelName: string,
-    attributes: SequelizeOrig.ModelAttributes,
-    options?: ModelOptionsWithViews<Model>
-  ): typeof Model {
+    attributes: ModelAttributes<M, TAttributes>,
+    options?: ModelOptionsWithViews<M>
+  ): ModelCtor<M> {
     options = options || {};
 
     const ModelClone = class extends Model {};
 
     ModelClone.init(attributes, { ...options, modelName, sequelize: this });
 
-    return ModelClone;
+    return ModelClone as unknown as ModelCtor<M>;
   }
 
   /**
@@ -274,7 +321,7 @@ export class Sequelize extends SequelizeOrig.Sequelize {
    *
    * @returns {Promise}
    */
-  public sync(options?: SequelizeOrig.SyncOptions): any {
+  public override sync(options?: SyncOptions): any {
     return super
       .sync(options)
       .then(() =>
