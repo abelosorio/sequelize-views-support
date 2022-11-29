@@ -1,3 +1,15 @@
+# [4.1.0](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.0.2...v4.1.0) (2022-11-29)
+
+
+### Bug Fixes
+
+* use new query interface location ([950c074](https://github.com/sugarandmagic/sequelize-mv-support/commit/950c074d33a59df05f96f7bd39bfb09c131fc4c4))
+
+
+### Features
+
+* update all dependencies and fix ts errors ([610eb80](https://github.com/sugarandmagic/sequelize-mv-support/commit/610eb808d8be8184d7a8d732ad1e0236d1fb90a9))
+
 ## [4.0.2](https://github.com/sugarandmagic/sequelize-mv-support/compare/v4.0.1...v4.0.2) (2020-06-01)
 
 
